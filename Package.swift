@@ -8,11 +8,18 @@ let package = Package(
     products: [
         .library(
             name: "Crypto",
-            targets: ["Crypto_PrecompiledProduct"]
+            targets: ["Crypto", "Crypto_PrecompiledProduct"]
         ),
         .library(
             name: "_CryptoExtras",
-            targets: ["_CryptoExtras_PrecompiledProduct"]
+            targets: [
+                "_CryptoExtras",
+                "CCryptoBoringSSL",
+                "CCryptoBoringSSLShims",
+                "CryptoBoringWrapper",
+                "Crypto",
+                "_CryptoExtras_PrecompiledProduct"
+            ]
         )
     ],
     dependencies: [
@@ -24,8 +31,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "CCryptoBoringSSL",
-            url: "https://github.com/swift-precompiled/swift-crypto/releases/download/3.15.1/CCryptoBoringSSL-9b8bf213f563614edf45afc398f3f485320b6dcadf43b3de26475e33803b657f.xcframework.zip",
-            checksum: "9b8bf213f563614edf45afc398f3f485320b6dcadf43b3de26475e33803b657f"
+            url: "https://github.com/swift-precompiled/swift-crypto/releases/download/3.15.1/CCryptoBoringSSL-d791fe33b68738751c990d7863b0b48bfbde3fc31a68d19da9fde550d58441f0.xcframework.zip",
+            checksum: "d791fe33b68738751c990d7863b0b48bfbde3fc31a68d19da9fde550d58441f0"
         ),
         .binaryTarget(
             name: "CCryptoBoringSSLShims",
@@ -39,8 +46,8 @@ let package = Package(
         ),
         .binaryTarget(
             name: "Crypto",
-            url: "https://github.com/swift-precompiled/swift-crypto/releases/download/3.15.1/Crypto-ee961f78853eeb051937ff15334a581878c3722c6adcd6c9d8d52fb62767fa36.xcframework.zip",
-            checksum: "ee961f78853eeb051937ff15334a581878c3722c6adcd6c9d8d52fb62767fa36"
+            url: "https://github.com/swift-precompiled/swift-crypto/releases/download/3.15.1/Crypto-e8cc3c9e5325dc6e4c0ee10a543c4499b0420fcfc8ec66d15fe9b1b5c13955ac.xcframework.zip",
+            checksum: "e8cc3c9e5325dc6e4c0ee10a543c4499b0420fcfc8ec66d15fe9b1b5c13955ac"
         ),
         .target(
             name: "_CryptoExtras_Aggregation",
@@ -49,8 +56,8 @@ let package = Package(
         ),
         .binaryTarget(
             name: "_CryptoExtras",
-            url: "https://github.com/swift-precompiled/swift-crypto/releases/download/3.15.1/_CryptoExtras-628fc80139c210ad19dfc13c6e7be322697b0e79e1c25109eedf36b7fedfafaa.xcframework.zip",
-            checksum: "628fc80139c210ad19dfc13c6e7be322697b0e79e1c25109eedf36b7fedfafaa"
+            url: "https://github.com/swift-precompiled/swift-crypto/releases/download/3.15.1/_CryptoExtras-d18814757f1349edb80c09aba3e979c770b86412488ffa1917818c028c5d2598.xcframework.zip",
+            checksum: "d18814757f1349edb80c09aba3e979c770b86412488ffa1917818c028c5d2598"
         ),
         .target(
             name: "CryptoBoringWrapper_Aggregation",
@@ -59,8 +66,8 @@ let package = Package(
         ),
         .binaryTarget(
             name: "CryptoBoringWrapper",
-            url: "https://github.com/swift-precompiled/swift-crypto/releases/download/3.15.1/CryptoBoringWrapper-35aa57a29d7e4cad7dd204f443c3306ec0871374c16f6219fd4ff8b0182b4f9b.xcframework.zip",
-            checksum: "35aa57a29d7e4cad7dd204f443c3306ec0871374c16f6219fd4ff8b0182b4f9b"
+            url: "https://github.com/swift-precompiled/swift-crypto/releases/download/3.15.1/CryptoBoringWrapper-70d8c9d75b2c881c6aa39f8636647c34a1ee50d7ac46bfd6fb0358e1a57766d1.xcframework.zip",
+            checksum: "70d8c9d75b2c881c6aa39f8636647c34a1ee50d7ac46bfd6fb0358e1a57766d1"
         ),
         .target(
             name: "Crypto_PrecompiledProduct",
@@ -70,14 +77,14 @@ let package = Package(
             name: "_CryptoExtras_PrecompiledProduct",
             dependencies: [
                 "_CryptoExtras_Aggregation",
-                "CCryptoBoringSSL",
-                "CCryptoBoringSSLShims",
-                "CryptoBoringWrapper_Aggregation",
-                "Crypto_Aggregation",
                 .product(
                     name: "SwiftASN1",
                     package: "swift-asn1"
-                )
+                ),
+                "CCryptoBoringSSL",
+                "CCryptoBoringSSLShims",
+                "CryptoBoringWrapper_Aggregation",
+                "Crypto_Aggregation"
             ]
         )
     ],
