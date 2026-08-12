@@ -31,8 +31,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "CCryptoBoringSSL",
-            url: "https://github.com/swift-precompiled/swift-crypto/releases/download/3.15.1/CCryptoBoringSSL-d791fe33b68738751c990d7863b0b48bfbde3fc31a68d19da9fde550d58441f0.xcframework.zip",
-            checksum: "d791fe33b68738751c990d7863b0b48bfbde3fc31a68d19da9fde550d58441f0"
+            url: "https://github.com/swift-precompiled/swift-crypto/releases/download/3.15.1/CCryptoBoringSSL-144d5063187dc6e1510ef85d05bc5bef815fbe26a9a310fe72b5f4451e8b57dd.xcframework.zip",
+            checksum: "144d5063187dc6e1510ef85d05bc5bef815fbe26a9a310fe72b5f4451e8b57dd"
         ),
         .binaryTarget(
             name: "CCryptoBoringSSLShims",
@@ -42,36 +42,43 @@ let package = Package(
         .target(
             name: "Crypto_Aggregation",
             dependencies: ["Crypto"],
+            resources: [.copy("PrivacyInfo.xcprivacy")],
+            packageAccess: false,
             swiftSettings: [.define("SCIPIO_PRECOMPILED_BINARY_WRAPPER")]
         ),
         .binaryTarget(
             name: "Crypto",
-            url: "https://github.com/swift-precompiled/swift-crypto/releases/download/3.15.1/Crypto-e8cc3c9e5325dc6e4c0ee10a543c4499b0420fcfc8ec66d15fe9b1b5c13955ac.xcframework.zip",
-            checksum: "e8cc3c9e5325dc6e4c0ee10a543c4499b0420fcfc8ec66d15fe9b1b5c13955ac"
+            url: "https://github.com/swift-precompiled/swift-crypto/releases/download/3.15.1/Crypto-e04f22e7c0737304b06cbf28c62c41c3caf6f3dcf8de622ffff4ec86a60f71d8.xcframework.zip",
+            checksum: "e04f22e7c0737304b06cbf28c62c41c3caf6f3dcf8de622ffff4ec86a60f71d8"
         ),
         .target(
             name: "_CryptoExtras_Aggregation",
             dependencies: ["_CryptoExtras"],
+            resources: [.copy("PrivacyInfo.xcprivacy")],
+            packageAccess: false,
             swiftSettings: [.define("SCIPIO_PRECOMPILED_BINARY_WRAPPER")]
         ),
         .binaryTarget(
             name: "_CryptoExtras",
-            url: "https://github.com/swift-precompiled/swift-crypto/releases/download/3.15.1/_CryptoExtras-d18814757f1349edb80c09aba3e979c770b86412488ffa1917818c028c5d2598.xcframework.zip",
-            checksum: "d18814757f1349edb80c09aba3e979c770b86412488ffa1917818c028c5d2598"
+            url: "https://github.com/swift-precompiled/swift-crypto/releases/download/3.15.1/_CryptoExtras-a463010ef924005f966a254d6a1a04aeb9261b4d6702cde87fc4b25b4b185797.xcframework.zip",
+            checksum: "a463010ef924005f966a254d6a1a04aeb9261b4d6702cde87fc4b25b4b185797"
         ),
         .target(
             name: "CryptoBoringWrapper_Aggregation",
             dependencies: ["CryptoBoringWrapper"],
+            resources: [.copy("PrivacyInfo.xcprivacy")],
+            packageAccess: false,
             swiftSettings: [.define("SCIPIO_PRECOMPILED_BINARY_WRAPPER")]
         ),
         .binaryTarget(
             name: "CryptoBoringWrapper",
-            url: "https://github.com/swift-precompiled/swift-crypto/releases/download/3.15.1/CryptoBoringWrapper-70d8c9d75b2c881c6aa39f8636647c34a1ee50d7ac46bfd6fb0358e1a57766d1.xcframework.zip",
-            checksum: "70d8c9d75b2c881c6aa39f8636647c34a1ee50d7ac46bfd6fb0358e1a57766d1"
+            url: "https://github.com/swift-precompiled/swift-crypto/releases/download/3.15.1/CryptoBoringWrapper-45a39b62978b70e83fcc9b81c0ff4daac1056afe7e16d905d43d34ba6a19dabd.xcframework.zip",
+            checksum: "45a39b62978b70e83fcc9b81c0ff4daac1056afe7e16d905d43d34ba6a19dabd"
         ),
         .target(
             name: "Crypto_PrecompiledProduct",
-            dependencies: ["Crypto_Aggregation"]
+            dependencies: ["Crypto_Aggregation"],
+            packageAccess: false
         ),
         .target(
             name: "_CryptoExtras_PrecompiledProduct",
@@ -85,7 +92,8 @@ let package = Package(
                 "CCryptoBoringSSLShims",
                 "CryptoBoringWrapper_Aggregation",
                 "Crypto_Aggregation"
-            ]
+            ],
+            packageAccess: false
         )
     ],
     cxxLanguageStandard: .cxx17
